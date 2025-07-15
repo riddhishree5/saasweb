@@ -27,6 +27,10 @@
     transition: 0.5s;
     z-index: 99;
 }
+.logo {
+      width: 252px;
+    height: 412px;
+}
 
 /*** Button Start ***/
 .btn {
