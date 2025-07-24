@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYC Registration Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container2 {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .banner {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .banner img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: -10px;
+        }
+
+        input, select {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        .radio-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 5px;
+        }
+
+        .radio-container label {
+            font-weight: normal;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .terms-inline {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .terms-inline label {
+            font-weight: normal;
+            margin-bottom: 0;
+        }
+
+        .register-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .register-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .checkmark-container {
+            margin-bottom: 20px;
+        }
+
+        .checkmark {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .checkmark:after {
+            content: '';
+            position: absolute;
+            left: 28px;
+            top: 15px;
+            width: 25px;
+            height: 40px;
+            border: solid white;
+            border-width: 0 5px 5px 0;
+            transform: rotate(45deg);
+        }
+
+        .close-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .close-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container2 {
+                width: 95%;
+                padding: 15px;
+            }
+            
+            .radio-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container2">
+        <div class="banner">
+            <img src="img/logoform.jpg" alt="Company Banner">
+        </div>
+        <form id="internshipForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="Name" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="Gender" required>
+                <option value="">Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="aadhar">Aadhar No:</label>
+            <input type="tel" id="aadhar" name="Aadhar" required>
+
+            <label for="pan">Pan No.:</label>
+            <input type="text" id="pan" name="Pan" required>
+
+            <label for="account">Account No:</label>
+            <input type="tel" id="account" name="Account" required>
+
+            <label>Mention the Year of apply KYC:</label>
+            <div class="radio-container">
+                <label><input type="radio" name="Year" value="2025" required>2025</label>
+                <label><input type="radio" name="Year" value="2026" required>2026</label>
+                <label><input type="radio" name="Year" value="2027" required>2027</label>
+                <label><input type="radio" name="Year" value="2028" required>2028</label>
+                <label><input type="radio" name="Year" value="2029" required>2029</label>
+            </div>
+
+            <div class="terms-inline">
+                <input type="checkbox" id="terms" name="Terms" required>
+                <label for="terms">I agree to the terms and conditions</label>
+            </div>
+
+            <button type="submit" class="register-btn" id="submitBtn">Register</button>
+        </form>
+    </div>
+
+    <!-- Modal Popup -->
+    <div id="popupModal" class="modal">
+        <div class="modal-content">
+            <div class="checkmark-container">
+                <div class="checkmark"></div>
+            </div>
+            <h3>Thank You!</h3>
+            <p>Your form has been submitted successfully.</p>
+            <button class="close-btn" id="closeModalBtn">OK</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('internshipForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const modal = document.getElementById('popupModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            
+            // Google Sheets script URL (replace with your own after deployment)
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxH4z84ujQLYDn48zArp73f9mil8sjt2BWiEwzP-ANXdn36OZthkpyE_6VokUP4CjuXDA/exec';
+            
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                // Disable submit button to prevent multiple submissions
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting...';
+                
+                try {
+                    // Prepare form data
+                    const formData = new FormData(form);
+                    const data = {};
+                    formData.forEach((value, key) => {
+                        data[key] = value;
+                    });
+                    
+                    // Send data to Google Sheets
+                    const response = await fetch(scriptURL, {
+                        method: 'POST',
+                        body: new URLSearchParams(data),
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        }
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.result === 'success') {
+                        // Show success modal
+                        modal.style.display = 'flex';
+                        
+                        // Reset form
+                        form.reset();
+                    } else {
+                        throw new Error(result.error || 'Failed to submit form');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Error: ' + error.message);
+                } finally {
+                    // Re-enable submit button
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Register';
+                }
+            });
+            
+            // Close modal and redirect (optional)
+            closeModalBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside of it
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
